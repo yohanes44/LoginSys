@@ -1,0 +1,24 @@
+body{
+    display: grid;
+    grid-template-rows: 20% 60% 20%;
+
+    height: 100vh;
+    border: 2px solid red;
+}
+.header{
+    background-color: aqua;
+}
+.main{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    background-color: chartreuse;
+}
+.menu{
+    border: 2px solid red;
+}
+.display{
+    border: 2px solid black;
+}
+.footer{
+    background-color: coral;
+}

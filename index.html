@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+
+    <style>
+        html, body {
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 15px;
+        }
+        form {
+        border: 5px solid #f1f1f1;
+        }
+        input[type=text], input[type=password] {
+        width: 100%;
+        padding: 16px 8px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        }
+        button {
+        background-color: #8ebf42;
+        color: white;
+        padding: 14px 0;
+        margin: 10px 0;
+        border: none;
+        cursor: grabbing;
+        width: 100%;
+        }
+        h1 {
+        text-align:center;
+        font-size:18;
+        }
+        button:hover {
+        opacity: 0.8;
+        }
+        .formcontainer {
+        text-align: left;
+        margin: 24px 50px 12px;
+        }
+        .container {
+        padding: 16px 0;
+        text-align:left;
+        }
+        button.psw{
+        background-color: blue;
+        float: right;
+        padding-top: 0;
+        padding-right: 15px;  
+        }
+        span.psw{
+        float: right;
+        padding-top: 0;
+        padding-right: 15px;
+        }
+ 
+      </style>
+
+</head>
+<body ng-app="app">
+ 
+    <div class="header">
+    Dengene Enovation Delivered
+    </div>
+  
+    <div class="main">
+        
+        <div class="menu">
+               <ul>
+                <li><a href="#/newEmployee">New employee</a></li>
+                <li><a href="#/employeesProfile">employeesProfile</a></li>
+                <li><a href="#/login">Login</a></li>
+                <li><a href="#/Home">Home</a></li>
+               </ul>
+        </div>
+       <div class="display">
+           
+          <ng-view>
+            
+          </ng-view>
+
+       </div>
+
+    </div>
+    
+    <div class="footer">
+    
+    </div>
+
+
+
+
+
+<script>
+var app = angular.module("app", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/",{
+         templateUrl: "home.html",
+         controller: "homeCl"
+       })
+    .when("/newEmployee", {
+        templeteUrl: "newEmployee.html",
+        controller: "newEmployeeCtrl"
+       })
+    .when("/employeesProfile", {
+        templateUrl: "employeesProfile.html",
+        controller: "employeesProfileCtrl"
+       })
+    .when("/login.html",{
+        templateUrl: "login.html",
+        controller: "loginCtrl"
+       })
+    .otherwise ({
+            redirectTo: '/'
+        })
+});
+
+app.controller("homeCtrl", ["$scope", function($scope){
+    $scope.friends = [
+        {name: "Feker", city: "Dessie"},
+        {name: "Abresh", city: "A.A"},
+        {name: "Endale", city: "Arba Minch"},
+        {name: "Estiv", city: "A.A"}
+    ]
+}])
+
+
+app.controller("newEmployeeCtrl", ["$scope", function($scope){
+
+}])
+
+app.controller("newEmployeeCtrl", ["$scope", function($scope){
+    $scope.arrEmployees = [],
+    $scope.addNewEmp = function(name, birthDate, address, phoneNumber){
+          $scope.arrEmployees.push({name, birthDate, address, phoneNumber}); 
+    }
+}])
+
+app.controller("employeesProfileCtrl", ["$scope", function($scope){
+   
+    $scope.showEmps = function(){
+        
+    }
+    
+    $scope.friends = [
+        {name: "Feker", city: "Dessie"},
+        {name: "Abresh", city: "A.A"},
+        {name: "Endale", city: "Arba Minch"},
+        {name: "Estiv", city: "A.A"}
+    ]
+}])
+
+
+app.controller("loginCtrl", ["$scope", function($scope){
+    $scope.msg = "Login Page";
+}])
+
+
+
+
+</script>
+
+</body>
+</html>
